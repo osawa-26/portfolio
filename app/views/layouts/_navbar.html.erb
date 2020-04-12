@@ -1,0 +1,23 @@
+<header class="mb-4">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">学習メーター</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
+    </button> 
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Menu</a>
+      
+      <ul class="dropdown-menu dropdown-menu-right">
+        <li class="dropdown-item">勉強時間</li>
+        <li class="dropdown-item">記録する</li>
+        <li class="dropdown-item">勉強の記録</li>
+        <li class="dropdown-item"><%= link_to "ログアウト", logout_path, method: :delete %></li>
+      </ul>
+    </ul>
+    </div>
+  </nav>
+</header>
