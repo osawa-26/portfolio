@@ -1,9 +1,9 @@
 class RecordsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user,  only: [:show,:edit,:update,:destroy]
+  before_action :correct_user,  only: [:edit,:update,:destroy]
 
   def index
-      @records = current_user.records.order(id: :desc).page(params[:page]).per(3)
+      @records = current_user.records.order(id: :desc).page(params[:page]).per(5)
   end
   
   def new
@@ -14,7 +14,7 @@ class RecordsController < ApplicationController
     @record = current_user.records.build(record_params)
     if @record.save(record_params)
       flash[:success] = '正常に入力されました'
-      redirect_to root_url
+      redirect_to records_url
     else
       flash.now[:danger] = '正常に入力されませんでした'
       render :new
@@ -27,7 +27,7 @@ class RecordsController < ApplicationController
   def update
     if @record.update(record_params)
       flash[:success] = '正常に入力されました'
-      redirect_to @record
+      redirect_to records_url
     else
       flash.now[:danger] = '正常に入力されませんでした'
       render :edit
@@ -43,7 +43,7 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:material, :study_time, :memo)
+    params.require(:record).permit(:study_date, :material, :study_time, :memo)
   end
 
   def correct_user
